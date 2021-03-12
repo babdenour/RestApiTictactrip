@@ -1,0 +1,14 @@
+{
+	"name": "restapi",
+	"version": "1.0.0",
+	"description": "test api rest nodejs pour tictactrip",
+	"main": "app.js",
+	"scripts": {
+		"dev": "npx nodemon app.js"
+	},
+	"author": "Abdenour Bensouna",
+	"license": "ISC",
+	"dependencies": {
+		"nodemon": "^2.0.7"
+	}
+}
