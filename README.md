@@ -24,3 +24,10 @@
     La documentation
 
 Envoie ton lien vers un repo github et ton url public à jobs@tictactrip.fr
+
+#### Documentation
+
+    Start the project
+    - npm install
+    - npm run dev
+    - enjoy

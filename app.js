@@ -1,25 +1,20 @@
-const justify = require("./justify.js");
-
 const express = require("express");
+const cors = require("cors");
+
+const router = require("./router");
 const app = express();
+const port = 3000;
 
+//set view engine for render
 app.set("view engine", "ejs");
+//set folder of views
 app.use("/views", express.static("public"));
-
-//route
-app.get("/", function (req, res) {
-	res.render("home");
-});
-app.get("/api/justify", function (req, res) {
-	res.send("justify");
-});
-
-//functions
-const text = `Hello I'm Abdenour here for you!sdf gds sdwrahvre sf rgwdgwrgwvfwef ewrff aygasd abdenour bensouna for tfweft ofs ddds a vre sf udjksncxjkfwdnsjkn jwdsnfjsdkbg vshckxbeudsj uHello I'm Abdenour here for you!sdf gds sdwrahvre sf rgwdgwrgwvfwef ewrff aygasd abdenour bensouna for tjlnafscln abdenour bensouna`;
-
-justify.justifyLine(text);
+//open cors
+app.use(cors());
+//router
+app.use(router);
 
 //server
-app.listen(3000, () => {
-	console.log("Server running...");
+app.listen(port || 3002, () => {
+	console.log(`Server running... on http://localhost:${port}`);
 });
