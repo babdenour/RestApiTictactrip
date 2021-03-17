@@ -1,12 +1,16 @@
-// Rate max per day
-// return 402 payement required if RM > 80 000 char
+const moment = require("moment");
+const dateRef = parseInt(moment().format("DD"));
 
+// return 402 payement required if RM > 80 000 char
 const verify = (rateMax, allMessage, date) => {
 	if (allMessage.length < rateMax) {
-		console.log(`rate Limite not reach ${date}`);
-		return 1;
-	}
-	return 0;
+		if (date == dateRef) {
+			// Rate max per day
+			console.log(`rate Limite not reach day : ${date}`);
+			return true;
+		}
+	} else console.log(`rate Limite reach day: ${date}`);
+	return false;
 };
 
 //To check and split message from the post and wrap it as 80 char

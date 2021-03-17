@@ -1,9 +1,19 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const router = require("./router");
 const app = express();
 const port = 3000;
+
+app.use(bodyParser.json());
+app.use(
+	bodyParser.urlencoded({
+		extended: true,
+		limit: "20mb",
+		parameterLimit: 100000,
+	})
+);
 
 //set view engine for render
 app.set("view engine", "ejs");
