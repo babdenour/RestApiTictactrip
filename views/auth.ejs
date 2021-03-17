@@ -1,0 +1,32 @@
+<%- include ('partials/header') %>
+<h1>Auth</h1>
+
+<h3>Authentification</h3>
+<div class="message">
+	<form id="form" action="/api/token" method="post">
+		<label for="email">Email</label>
+		<input name="email" type="text" />
+		<label for="pswd">Password</label>
+		<input name="pswd" type="password" />
+		<input type="submit" value="submit" />
+	</form>
+</div>
+<%- include ('partials/footer') %>
+
+<style>
+	.message {
+		margin: 0.6rem;
+		padding: 3rem;
+		background-color: lightgrey;
+		border: black solid 1px;
+		border-radius: 1rem;
+		overflow: auto;
+		overflow-wrap: break-word;
+		padding: 1rem;
+		margin-left: 2rem;
+		max-width: 36rem;
+		max-height: 20rem;
+		width: fit-content;
+		height: fit-content;
+	}
+</style>
