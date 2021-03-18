@@ -1,48 +1,19 @@
 const express = require("express");
-const moment = require("moment");
 
 const router = express.Router();
-const justify = require("../justify");
-const auth = require("../auth");
+const justifyController = require("../controllers/justifyController");
+const authController = require("../controllers/authController");
 
-//Route...Get
 router.get("/", (req, res) => {
 	res.render("index");
 });
-router.get("/api/justify", (req, res) => {
-	res.render("justify");
-});
-router.get("/api/auth", (req, res) => {
-	//json body {"email": "foo@bar.com"}
-	res.render("auth");
-});
 
-let message = [];
-let allMessage = "";
-const rateMax = 80000;
-const justifyLineLength = 80;
+//Route...justify
+router.get("/api/justify", justifyController.justify_get);
+router.post("/api/justify", justifyController.justify_post);
 
-//Route...Post
-router.post("/api/justify", (req, res) => {
-	//ContentType text/plain
-	let newMessage = req.body.msg;
-	let date = parseInt(moment().format("DD"));
-
-	if (justify.verify(rateMax, allMessage, date)) {
-		message = justify.justifyLine(newMessage, justifyLineLength);
-		allMessage += message;
-		res.render("justify", { msg: allMessage, date: date });
-	} else {
-		res.status(402).send("erreur: Payment Required");
-	}
-});
-
-router.post("/api/token", (req, res) => {
-	let email = req.body.email;
-	let pswd = req.body.pswd;
-	console.log(email, pswd);
-
-	res.render("index");
-});
+//Route...Auth
+router.get("/api/auth", authController.sign_in);
+router.post("/api/token", authController.post);
 
 module.exports = router;

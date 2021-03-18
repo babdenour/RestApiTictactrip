@@ -2,7 +2,7 @@ const moment = require("moment");
 const dateRef = parseInt(moment().format("DD"));
 
 // return 402 payement required if RM > 80 000 char
-const verify = (rateMax, allMessage, date) => {
+module.exports.verify = (rateMax, allMessage, date) => {
 	if (allMessage.length < rateMax) {
 		if (date == dateRef) {
 			// Rate max per day
@@ -14,7 +14,7 @@ const verify = (rateMax, allMessage, date) => {
 };
 
 //To check and split message from the post and wrap it as 80 char
-const justifyLine = (text, justifyLineLength) => {
+module.exports.justifyLine = (text, justifyLineLength) => {
 	arrLength = text.length;
 	arr = text.trim().split("");
 
@@ -40,5 +40,3 @@ const justifyLine = (text, justifyLineLength) => {
 	final = part.toString();
 	return final;
 };
-
-module.exports = { justifyLine, verify };
