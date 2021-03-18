@@ -3,6 +3,7 @@ const moment = require("moment");
 
 const router = express.Router();
 const justify = require("../justify");
+const auth = require("../auth");
 
 //Route...Get
 router.get("/", (req, res) => {
@@ -40,6 +41,7 @@ router.post("/api/token", (req, res) => {
 	let email = req.body.email;
 	let pswd = req.body.pswd;
 	console.log(email, pswd);
+
 	res.render("index");
 });
 
