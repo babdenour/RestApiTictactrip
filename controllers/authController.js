@@ -6,5 +6,6 @@ module.exports.sign_in = (req, res) => {
 
 module.exports.post = (req, res) => {
 	authService.log(req, res);
+	// console.log(req);
 	res.render("index");
 };

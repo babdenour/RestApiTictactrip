@@ -1,5 +1,5 @@
 module.exports.log = (req, res) => {
-	let email = req.body.email;
-	let pswd = req.body.pswd;
+	let { email, pswd } = req.body;
+
 	console.log(email, pswd);
 };
